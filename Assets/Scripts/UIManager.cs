@@ -21,6 +21,9 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
+
+        SetHealthLabel();
+
         restartBtn.onClick.AddListener(GameManager.Instance.RestartGame);
        
     }
@@ -32,18 +35,35 @@ public class UIManager : MonoBehaviour
             ShowGameOverUI();
         }
 
-        //SetHealthLabel();
+        SetScoreLabel();
+    
+    }
+
+  public void SetHealthLabel()
+    {
+        healthLabel.text = $"{GameManager.Instance.health}";
+    }
+
+    public void SetScoreLabel()
+    {
+        scoreLabel.text = $"{GameManager.Instance.score}";
+    }
+
+    public void SetHighScoreLabel()
+    {
+        highScoreLabel.text = $"{GameManager.Instance.highScore}";
     }
 
   
-
-   
 
     public void ShowGameOverUI(bool isGameOver = true)
     {
         Sequence sequence = DOTween.Sequence();
         sequence.Append(gameoverRect.DOScale(Vector3.one,duration).SetEase(easeType));
         gameOverLabel.text = isGameOver ? "GAME OVER" : "GAME WON";
+     
+        SetHighScoreLabel();
+
     }
 
     public void HideGameOverUI()

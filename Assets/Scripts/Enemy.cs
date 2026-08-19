@@ -46,20 +46,23 @@ public class Enemy : MonoBehaviour
     public void OnDied()
     {
         Destroy(gameObject);
-       
+        GameManager.Instance.AddScore(100);
+        GameManager.Instance.SaveHighScore();
     }
 
     public void OnReachGoal()
     {      
-        Destroy(gameObject);
+        GameManager.Instance.health--;
         GameManager.Instance.killedEnemyCount++;
+        GameManager.Instance.uimanager.SetHealthLabel();
+        Destroy(gameObject);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Goal"))
         {
-           
+           OnReachGoal();
         }
     }
 }

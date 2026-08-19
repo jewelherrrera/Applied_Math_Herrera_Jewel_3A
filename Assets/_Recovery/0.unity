@@ -261,7 +261,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
-  score: 1
+  score: 0
   highScore: 0
   killedEnemyCount: 0
   currentGameState: 0
@@ -1557,7 +1557,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 8230282772351356634, guid: d5d4a83df9432714186e524ec877a029, type: 3}
-  maxEnemyToSpawn: 5
+  maxEnemyToSpawn: 10
   interval: 1
   spawnPoints:
   - {fileID: 4755285}

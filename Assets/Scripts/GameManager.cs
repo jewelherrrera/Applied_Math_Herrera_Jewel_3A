@@ -32,24 +32,40 @@ public class GameManager : MonoBehaviour
         {
             uimanager.ShowGameOverUI(false);
         }
+        
     }
 
     void Start()
     {
         SetGameState(GameState.Playing);
-     
+
+        LoadHighScore();
+
     }
 
-    
+    public void AddScore(int givenScore)
+    {
 
+        score += givenScore;
 
-  
+    }
+
+    public void SaveHighScore()
+    {
+        PlayerPrefs.SetInt("HighScore", score);
+    }
+    public void LoadHighScore()
+    {
+       score = PlayerPrefs.GetInt("HighScore");
+       uimanager.SetScoreLabel();
+    }
+
 
     public void RestartGame()
     {
-        
+        Debug.Log("Restarting");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        
+    
 
     }
 
