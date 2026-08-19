@@ -46,6 +46,7 @@ public class Enemy : MonoBehaviour
     public void OnDied()
     {
         Destroy(gameObject);
+        //player can earn points during gameplay
         GameManager.Instance.AddScore(100);
         GameManager.Instance.SaveHighScore();
     }
